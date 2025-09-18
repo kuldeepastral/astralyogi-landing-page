@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - AstralYogi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #1B263B;
+            --accent-color: #FFD23F;
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-light: #F8F9FA;
+            --gradient-primary: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            --gradient-secondary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Error Section */
+        .error-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23FF6B35" opacity="0.05"/><circle cx="20" cy="20" r="1" fill="%23FFD23F" opacity="0.05"/><circle cx="80" cy="30" r="1.5" fill="%23FF6B35" opacity="0.05"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100px) translateY(-100px) rotate(0deg); }
+            100% { transform: translateX(100px) translateY(100px) rotate(360deg); }
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-icon {
+            font-size: 8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .error-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .error-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Suggestions */
+        .suggestions {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+
+        .suggestions h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .suggestions-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .suggestions-list li {
+            text-align: center;
+        }
+
+        .suggestions-list a {
+            display: block;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .suggestions-list a:hover {
+            background: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .suggestions-list i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .error-code {
+                font-size: 4rem;
+            }
+
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .suggestions-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .error-section {
+                padding: 60px 0;
+            }
+
+            .error-code {
+                font-size: 3rem;
+            }
+
+            .error-icon {
+                font-size: 6rem;
+            }
+        }
+
+        /* Animation for page load */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-content > * {
+            animation-delay: 0.1s;
+        }
+
+        .error-content > *:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .error-content > *:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .error-content > *:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .error-content > *:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="/" class="logo">AstralYogi</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#features">Features</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#whatsapp">WhatsApp Bot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Error Section -->
+    <section class="error-section">
+        <div class="container">
+            <div class="error-content">
+                <i class="fas fa-om error-icon fade-in"></i>
+                <div class="error-code fade-in">404</div>
+                <h1 class="error-title fade-in">Page Not Found</h1>
+                <p class="error-subtitle fade-in">The cosmic path you're looking for seems to have shifted...</p>
+                
+                <div class="error-message fade-in">
+                    <p>🌟 Don't worry! Even the stars sometimes take unexpected paths. The page you're looking for might have been moved, deleted, or perhaps it never existed in this dimension.</p>
+                    <p>Let our AI astrologer guide you back to the right cosmic alignment!</p>
+                </div>
+
+                <div class="cta-buttons fade-in">
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i>
+                        Return Home
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Go Back
+                    </a>
+                    <a href="https://wa.me/1234567890?text=Hi%20AstralYogi,%20I%20need%20help%20finding%20something%20on%20your%20website" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Help
+                    </a>
+                </div>
+
+                <div class="suggestions fade-in">
+                    <h3>Popular Destinations</h3>
+                    <ul class="suggestions-list">
+                        <li>
+                            <a href="/#features">
+                                <i class="fas fa-brain"></i>
+                                <div>AI Features</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#services">
+                                <i class="fas fa-chart-pie"></i>
+                                <div>Birth Chart</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <div>WhatsApp Bot</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#testimonials">
+                                <i class="fas fa-star"></i>
+                                <div>Reviews</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#services">Services</a></li>
+                    <li><a href="/#whatsapp">WhatsApp</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; color: rgba(255, 255, 255, 0.6);">
+                &copy; 2024 AstralYogi. All rights reserved. Made with ❤️ in India
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // WhatsApp integration
+        function openWhatsApp() {
+            const phoneNumber = '1234567890'; // Replace with actual WhatsApp number
+            const message = encodeURIComponent('Hi AstralYogi, I need help finding something on your website');
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Add click event to WhatsApp button
+        document.querySelector('.btn-whatsapp').addEventListener('click', function(e) {
+            e.preventDefault();
+            openWhatsApp();
+        });
+
+        // Add some interactivity to suggestions
+        document.querySelectorAll('.suggestions-list a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.querySelector('i').style.transform = 'scale(1.2) rotate(10deg)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.querySelector('i').style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Random astrology quote on page load
+        const astroQuotes = [
+            "The stars have aligned to bring you back to the right path! ✨",
+            "Mercury must be in retrograde - let's get you back on track! 🌟",
+            "The cosmos has a sense of humor - this page took a celestial detour! 🌙",
+            "Even the universe makes mistakes sometimes - let's realign! ⭐",
+            "This page has transcended to another dimension - let's find your way! 🔮"
+        ];
+
+        // Update the error message with a random quote
+        const randomQuote = astroQuotes[Math.floor(Math.random() * astroQuotes.length)];
+        const subtitleElement = document.querySelector('.error-subtitle');
+        
+        setTimeout(() => {
+            subtitleElement.textContent = randomQuote;
+        }, 2000);
+
+        // Easter egg: Click on Om symbol for surprise
+        let clickCount = 0;
+        document.querySelector('.error-icon').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 3) {
+                this.style.animation = 'pulse 0.5s infinite';
+                setTimeout(() => {
+                    this.style.animation = 'pulse 2s infinite';
+                    alert('🕉️ The Om symbol has blessed you with good fortune! Your next horoscope reading will be extra accurate! 🌟');
+                    clickCount = 0;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
